@@ -1,0 +1,6 @@
+<h1>Todo List</h1>
+<ul class="list-group">
+  <li *ngFor="let t of todos" class="list-group-item" [id]="t.id">{{ t.todo }}</li>
+</ul>
+<hr />
+<!-- <div class="text-muted">Caricati {{ todoResponse.todos.length }} di {{ todoResponse.total }}</div> -->

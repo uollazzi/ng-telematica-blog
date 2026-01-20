@@ -10,10 +10,4 @@ import { TodoList } from "./components/todo-list/todo-list";
 })
 export class App {
   protected readonly title = signal('ng-telematica-blog');
-
-  todosVisible = true;
-
-  toggleVisible() {
-    this.todosVisible = !this.todosVisible;
-  }
 }

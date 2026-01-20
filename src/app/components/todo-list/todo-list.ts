@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { TodosService } from '../../services/todos';
 import { GetTodosResponse, Todo } from '../../models/todo';
 import { CommonModule } from '@angular/common';
@@ -7,22 +7,19 @@ import { CommonModule } from '@angular/common';
   selector: 'app-todo-list',
   imports: [CommonModule],
   templateUrl: './todo-list.html',
-  styleUrl: './todo-list.css',
+  styleUrl: './todo-list.css'
 })
 export class TodoList implements OnInit {
   todosService: TodosService = inject(TodosService);
-  todoResponse?: GetTodosResponse;
-  todos: Todo[] = [];
-
+  todoResponse = signal<GetTodosResponse | undefined>(undefined);
 
   ngOnInit(): void {
     this.todosService.getTodos()
       .subscribe(r => {
-        this.todoResponse = r;
-        this.todos = r.todos;
-        console.log("Todos scaricati con successo");
-        console.log(this.todos);
+        this.todoResponse.set(r);
 
+        console.log("Todos scaricati con successo");
+        console.log(this.todoResponse()?.todos);
       });
   }
 }

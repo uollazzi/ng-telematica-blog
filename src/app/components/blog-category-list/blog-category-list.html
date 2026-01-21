@@ -1,0 +1,9 @@
+<div class="btn-group btn-group-sm mb-2" role="group">
+  <button type="button" class="btn btn-outline-secondary">Tutte</button>
+
+  @for (c of categorie(); track c.id) {
+    <button type="button" class="btn btn-outline-secondary">
+      {{ c.nome }}
+    </button>
+  }
+</div>

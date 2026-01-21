@@ -11,15 +11,15 @@ import { CommonModule } from '@angular/common';
 })
 export class TodoList implements OnInit {
   todosService: TodosService = inject(TodosService);
-  todoResponse = signal<GetTodosResponse | undefined>(undefined);
+  todoResponse?: GetTodosResponse;
 
   ngOnInit(): void {
     this.todosService.getTodos()
       .subscribe(r => {
-        this.todoResponse.set(r);
+        this.todoResponse = r;
 
         console.log("Todos scaricati con successo");
-        console.log(this.todoResponse()?.todos);
+        console.log(this.todoResponse.todos);
       });
   }
 }

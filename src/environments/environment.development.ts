@@ -1,0 +1,3 @@
+export const environment = {
+    NET_API_BASE_URL: "https://localhost:7000/api"
+};

@@ -10,7 +10,6 @@ import { CategoriaModel } from '../../models/blog';
 })
 export class BlogCategoryList implements OnInit {
   blogService: BlogService = inject(BlogService);
-
   categorie = signal<CategoriaModel[]>([]);
 
   ngOnInit(): void {

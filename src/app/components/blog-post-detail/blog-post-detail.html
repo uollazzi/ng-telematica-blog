@@ -1,0 +1,20 @@
+@if (post()) {
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ post()?.titolo }}</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">
+        Categoria: {{ post()?.categoria?.nome }}
+      </h6>
+
+      <p class="card-text">{{ post()?.testo }}</p>
+
+      <p class="card-text">
+        <small class="text-muted"> Scritto da: {{ post()?.autore }} </small>
+      </p>
+
+      <a class="card-link" routerLink="/blog">Torna all'elenco</a>
+    </div>
+  </div>
+} @else {
+  <app-loading-spinner></app-loading-spinner>
+}

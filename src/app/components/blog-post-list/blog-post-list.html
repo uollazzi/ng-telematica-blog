@@ -1,1 +1,19 @@
-<p>blog-post-list works!</p>
+<a class="btn btn-success" routerLink="/blog/articolo/nuovo">
+  <i class="bi bi-plus-square-fill"></i>
+  Nuovo articolo
+</a>
+<hr />
+@if (posts().length == 0) {
+  <p>Non ci sono articoli da visualizzare.</p>
+} @else {
+  <ul class="list-group">
+    @for (p of posts(); track p.id) {
+      <a
+        [routerLink]="['/', 'blog', 'articolo', p.id]"
+        class="list-group-item list-group-item-action"
+      >
+        {{ p.titolo }}
+      </a>
+    }
+  </ul>
+}

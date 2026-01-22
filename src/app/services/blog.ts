@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { CategoriaModel } from '../models/blog';
+import { ArticoloModel, CategoriaModel } from '../models/blog';
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root',
@@ -8,8 +10,15 @@ import { CategoriaModel } from '../models/blog';
 export class BlogService {
   private http: HttpClient = inject(HttpClient);
 
-  // TODO: environments
   getCategories() {
-    return this.http.get<CategoriaModel[]>("https://localhost:7000/api/Categorie");
+    return this.http.get<CategoriaModel[]>(environment.NET_API_BASE_URL + "/Categorie");
+  }
+
+  getArticoli() {
+    return this.http.get<ArticoloModel[]>(environment.NET_API_BASE_URL + "/Articoli");
+  }
+
+  getArticoloById(id: string) {
+    return this.http.get<ArticoloModel>(environment.NET_API_BASE_URL + "/Articoli/" + id);
   }
 }

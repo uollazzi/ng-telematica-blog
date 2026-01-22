@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-center">
+  <div
+    style="width: 3rem; height: 3rem"
+    [class.spinner-border]="type == 'border'"
+    [class.spinner-grow]="type == 'grow'"
+    [class.text-primary]="color == 'blue'"
+    [class.text-warning]="color == 'yellow'"
+    [class.text-danger]="color == 'red'"
+    role="status"
+  >
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>

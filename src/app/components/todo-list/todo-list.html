@@ -1,8 +1,13 @@
 <h1>Todo List</h1>
-<ul class="list-group">
-  @for (t of todoResponse()?.todos; track t.id) {
-    <li class="list-group-item" [id]="t.id">{{ t.todo }}</li>
-  }
-</ul>
-<hr />
-<div class="text-muted">Caricati {{ numeroTodoScaricati() }} di {{ numeroTodoTotali() }}</div>
+
+@if (todoResponse()) {
+  <ul class="list-group">
+    @for (t of todoResponse()?.todos; track t.id) {
+      <li class="list-group-item" [id]="t.id">{{ t.todo }}</li>
+    }
+  </ul>
+  <hr />
+  <div class="text-muted">Caricati {{ numeroTodoScaricati() }} di {{ numeroTodoTotali() }}</div>
+} @else {
+  <app-loading-spinner></app-loading-spinner>
+}

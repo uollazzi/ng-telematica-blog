@@ -2,10 +2,11 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { TodosService } from '../../services/todos';
 import { GetTodosResponse, Todo } from '../../models/todo';
 import { CommonModule } from '@angular/common';
+import { LoadingSpinner } from '../loading-spinner/loading-spinner';
 
 @Component({
   selector: 'app-todo-list',
-  imports: [CommonModule],
+  imports: [CommonModule, LoadingSpinner],
   templateUrl: './todo-list.html',
   styleUrl: './todo-list.css'
 })

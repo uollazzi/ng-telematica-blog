@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { ArticoloModel, CategoriaModel } from '../models/blog';
+import { ArticoloDTO, ArticoloModel, CategoriaModel } from '../models/blog';
 import { environment } from '../../environments/environment';
 
 
@@ -20,5 +20,9 @@ export class BlogService {
 
   getArticoloById(id: string) {
     return this.http.get<ArticoloModel>(environment.NET_API_BASE_URL + "/Articoli/" + id);
+  }
+
+  insertArticolo(articolo: ArticoloDTO) {
+    return this.http.post<ArticoloModel>(environment.NET_API_BASE_URL + "/Articoli", articolo);
   }
 }

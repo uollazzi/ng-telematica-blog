@@ -1,1 +1,48 @@
-<p>blog-post-add works!</p>
+<!-- template reference variable (è un modo comodo per dare un nome ad un oggetto HTML)-->
+<form (ngSubmit)="insertArticolo()" #laForm="ngForm">
+  <div class="mb-3">
+    <label for="titolo" class="form-label">Titolo</label>
+    <input
+      type="text"
+      id="titolo"
+      name="titolo"
+      class="form-control"
+      [(ngModel)]="model.titolo"
+      placeholder="Titolo..."
+      required
+      #inputTitolo="ngModel"
+      [class.is-invalid]="inputTitolo.invalid && inputTitolo.dirty"
+      [class.is-valid]="inputTitolo.valid && inputTitolo.dirty"
+    />
+    @if (inputTitolo.invalid && inputTitolo.dirty) {
+      <div class="invalid-feedback">Titolo obbligatorio</div>
+    }
+  </div>
+  <div class="mb-3">
+    <label for="categoriaId" class="form-label">Categoria</label>
+    <select id="cetegoriaId" name="cetegoriaId" class="form-select" [(ngModel)]="model.categoriaId">
+      @for (c of categorie(); track c.id) {
+        <option [ngValue]="c.id">{{ c.nome }}</option>
+      }
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="testo" class="form-label">Testo</label>
+    <textarea
+      id="testo"
+      name="testo"
+      class="form-control"
+      [(ngModel)]="model.testo"
+      placeholder="Testo..."
+      required
+      minlength="10"
+      #textareaTesto="ngModel"
+      [class.is-invalid]="textareaTesto.invalid && textareaTesto.dirty"
+      [class.is-valid]="textareaTesto.valid && textareaTesto.dirty"
+    ></textarea>
+    @if (textareaTesto.invalid && textareaTesto.dirty) {
+      <div class="invalid-feedback">Testo obbligatorio</div>
+    }
+  </div>
+  <button class="btn btn-primary" type="submit" [disabled]="!laForm.valid">Salva</button>
+</form>
